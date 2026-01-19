@@ -43,7 +43,7 @@ export function HeroSection() {
         <div className="max-w-4xl">
           <RevealAnimation>
             <motion.span
-              className="inline-block text-sm font-medium tracking-widest uppercase text-accent/90 dark:text-accent mb-6"
+              className="inline-block text-sm font-medium tracking-widest uppercase text-white mb-6 drop-shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}

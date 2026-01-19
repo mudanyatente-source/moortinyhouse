@@ -202,47 +202,55 @@ export default function ModelDetailPage() {
                   </AnimatePresence>
 
                   {/* Hotspots on first image */}
-                  {activeImage === 0 &&
+                  {activeImage === 0 && model.hotspots && model.hotspots.length > 0 &&
                     model.hotspots.map((spot, i) => (
                       <motion.button
                         key={i}
-                        className="absolute z-20"
-                        style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+                        className="absolute z-20 touch-none"
+                        style={{ 
+                          left: `clamp(5%, ${spot.x}%, 90%)`, 
+                          top: `clamp(5%, ${spot.y}%, 85%)`,
+                        }}
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: i * 0.1 }}
-                        onClick={() => setActiveHotspot(activeHotspot === i ? null : i)}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          setActiveHotspot(activeHotspot === i ? null : i)
+                        }}
                       >
                         <motion.div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                          className={`w-10 h-10 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-colors shadow-lg ${
                             activeHotspot === i
                               ? "bg-accent text-accent-foreground"
-                              : "bg-background/80 text-foreground"
+                              : "bg-background/90 text-foreground border-2 border-accent/50"
                           }`}
                           whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
                           animate={activeHotspot === i ? {} : { scale: [1, 1.2, 1] }}
                           transition={activeHotspot === i ? {} : { duration: 2, repeat: Number.POSITIVE_INFINITY }}
                         >
-                          {activeHotspot === i ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                          {activeHotspot === i ? <X className="w-5 h-5 md:w-4 md:h-4" /> : <Plus className="w-5 h-5 md:w-4 md:h-4" />}
                         </motion.div>
                       </motion.button>
                     ))}
 
                   {/* Hotspot info popup */}
                   <AnimatePresence>
-                    {activeHotspot !== null && activeImage === 0 && (
+                    {activeHotspot !== null && activeImage === 0 && model.hotspots && model.hotspots[activeHotspot] && (
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
-                        className="absolute z-30 bg-background/95 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-border max-w-xs"
+                        className="absolute z-30 bg-background/95 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-border max-w-[280px] md:max-w-xs mx-2 md:mx-0"
                         style={{
-                          left: `${Math.min(model.hotspots[activeHotspot].x, 60)}%`,
-                          top: `${model.hotspots[activeHotspot].y + 8}%`,
+                          left: `clamp(10px, ${Math.min(model.hotspots[activeHotspot].x, 60)}%, calc(100% - 280px))`,
+                          top: `clamp(10px, ${model.hotspots[activeHotspot].y + 8}%, calc(100% - 150px))`,
                         }}
                       >
-                        <h4 className="font-semibold mb-1">{t(`hotspot.${model.slug}.${activeHotspot}.title`) || model.hotspots[activeHotspot]?.titleKey || ''}</h4>
-                        <p className="text-sm text-muted-foreground">{t(`hotspot.${model.slug}.${activeHotspot}.desc`) || model.hotspots[activeHotspot]?.descKey || ''}</p>
+                        <h4 className="font-semibold mb-1 text-sm md:text-base">{t(`hotspot.${model.slug}.${activeHotspot}.title`) || model.hotspots[activeHotspot]?.titleKey || model.hotspots[activeHotspot]?.title || ''}</h4>
+                        <p className="text-xs md:text-sm text-muted-foreground">{t(`hotspot.${model.slug}.${activeHotspot}.desc`) || model.hotspots[activeHotspot]?.descKey || model.hotspots[activeHotspot]?.desc || ''}</p>
                       </motion.div>
                     )}
                   </AnimatePresence>

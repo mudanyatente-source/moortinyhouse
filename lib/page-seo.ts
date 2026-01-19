@@ -83,9 +83,15 @@ export function getPageMetadata(settings: SiteSettings | null | undefined, pageI
     'prefabrik ev',
     'tiny house istanbul',
     'tiny house bursa',
-    ...(pageId === 'models' ? ['tiny house modelleri', 'tiny house fiyatları', 'mini ev çeşitleri'] : []),
-    ...(pageId === 'portfolio' ? ['tamamlanan projeler', 'tiny house portföy'] : []),
-    ...(pageId === 'contact' ? ['tiny house iletişim', 'randevu'] : []),
+    'tiny house fiyatları',
+    'tiny house modelleri',
+    'mini ev fiyatları',
+    'küçük ev modelleri',
+    ...(pageId === 'models' ? ['tiny house çeşitleri', 'mini ev çeşitleri', 'orion tiny house', 'beverly tiny house'] : []),
+    ...(pageId === 'portfolio' ? ['tamamlanan projeler', 'tiny house portföy', 'istanbul tiny house projeleri', 'bursa tiny house projeleri'] : []),
+    ...(pageId === 'contact' ? ['tiny house iletişim', 'randevu', 'tiny house keşif', 'ücretsiz danışmanlık'] : []),
+    ...(pageId === 'philosophy' ? ['sürdürülebilir yaşam', 'ekolojik ev', 'çevre dostu ev'] : []),
+    ...(pageId === 'testimonials' ? ['müşteri yorumları', 'tiny house referanslar', 'müşteri memnuniyeti'] : []),
   ]
 
   return {
@@ -123,4 +129,3 @@ export function getPageMetadata(settings: SiteSettings | null | undefined, pageI
     },
   }
 }
-

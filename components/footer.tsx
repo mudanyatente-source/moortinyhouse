@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Instagram, Facebook, Youtube, ArrowUpRight } from "lucide-react"
+import { Instagram, Facebook, ArrowUpRight } from "lucide-react"
 import { RevealAnimation } from "@/components/reveal-animation"
 import { useLanguage } from "@/lib/i18n"
 import { useSiteSettings } from "@/components/site-settings-provider"
@@ -27,7 +27,6 @@ export function Footer() {
     social: [
       { label: "Instagram", href: social_media.instagram || "#", icon: Instagram },
       { label: "Facebook", href: social_media.facebook || "#", icon: Facebook },
-      { label: "YouTube", href: social_media.youtube || "#", icon: Youtube },
     ],
   }
 

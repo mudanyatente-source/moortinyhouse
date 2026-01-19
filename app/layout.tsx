@@ -9,6 +9,7 @@ import { PageViewTracker } from "@/components/page-view-tracker"
 import { SiteSettingsProvider } from "@/components/site-settings-provider"
 import { getSiteSettings } from "@/lib/settings"
 import { SeoSchema } from "@/components/seo-schema"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 import "./globals.css"
 
 const dmSans = DM_Sans({
@@ -137,6 +138,7 @@ export default async function RootLayout({
               <SmoothScrollProvider>
                 <PageViewTracker />
                 {children}
+                <WhatsAppButton />
               </SmoothScrollProvider>
             </LanguageProvider>
           </SiteSettingsProvider>

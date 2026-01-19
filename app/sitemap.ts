@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { createServerClient } from '@/lib/supabase/server'
 
+export const dynamic = 'force-dynamic'
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://moortinyhouse.com'
   
@@ -41,6 +43,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     },
   ]
 
@@ -86,5 +100,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching portfolio for sitemap:', error)
   }
 
-  return [...staticPages, ...modelPages, ...portfolioPages]
+  // Blog pages (static)
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog/tiny-house-nedir-2024-rehberi`,
+      lastModified: new Date('2024-01-15'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/tiny-house-fiyatlari-detayli-fiyat-listesi`,
+      lastModified: new Date('2024-01-10'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/istanbulda-tiny-house-yasami-rehber`,
+      lastModified: new Date('2024-01-05'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/bursada-tiny-house-yerlesim-alanlari`,
+      lastModified: new Date('2023-12-28'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/tiny-house-vs-prefabrik-ev-karsilastirma`,
+      lastModified: new Date('2023-12-20'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/tiny-house-ruhsat-ve-yasal-surecler`,
+      lastModified: new Date('2023-12-15'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+  ]
+
+  return [...staticPages, ...modelPages, ...portfolioPages, ...blogPages]
 }

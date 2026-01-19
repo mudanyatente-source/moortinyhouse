@@ -59,20 +59,33 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
     areaServed: [
       {
         '@type': 'City',
-        name: 'İstanbul'
+        name: 'İstanbul',
+        '@id': 'https://www.wikidata.org/wiki/Q406'
       },
       {
         '@type': 'City',
-        name: 'Bursa'
+        name: 'Bursa',
+        '@id': 'https://www.wikidata.org/wiki/Q407'
       },
       {
         '@type': 'Country',
-        name: 'Türkiye'
+        name: 'Türkiye',
+        '@id': 'https://www.wikidata.org/wiki/Q43'
       }
     ],
     priceRange: '$$',
-    description: 'Türkiye\'nin önde gelen tiny house üreticisi. İstanbul ve Bursa\'da modern, sürdürülebilir ve özelleştirilebilir tiny house modelleri.',
-    keywords: 'tiny house, mini ev, küçük ev, mobil ev, prefabrik ev, istanbul tiny house, bursa tiny house, tiny house türkiye'
+    description: 'Türkiye\'nin önde gelen tiny house üreticisi. İstanbul ve Bursa\'da modern, sürdürülebilir ve özelleştirilebilir tiny house modelleri. Mini ev, küçük ev, mobil ev çözümleri.',
+    keywords: 'tiny house, mini ev, küçük ev, mobil ev, prefabrik ev, istanbul tiny house, bursa tiny house, tiny house türkiye, tiny house fiyatları, tiny house modelleri',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '40.9833',
+      longitude: '29.0833',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bursa',
+        addressCountry: 'TR'
+      }
+    }
   }
 
   // WebSite Schema with SearchAction

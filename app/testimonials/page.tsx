@@ -10,8 +10,8 @@ import { useLanguage } from "@/lib/i18n"
 const testimonials = [
   {
     id: 1,
-    name: "Sarah & Michael Chen",
-    location: "Portland, Oregon",
+    name: "Ayşe & Mehmet Yılmaz",
+    location: "İstanbul, Türkiye",
     model: "Aura",
     image: "/happy-couple-portrait-outdoor-natural-light-smilin.jpg",
     homeImage: "/modern-tiny-house-aura-model-exterior.jpg",
@@ -26,8 +26,8 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Emma Rodriguez",
-    location: "Austin, Texas",
+    name: "Zeynep Kaya",
+    location: "Bursa, Türkiye",
     model: "Zen",
     image: "/young-woman-portrait-outdoor-nature-happy-lifestyl.jpg",
     homeImage: "/zen-tiny-house-minimalist-interior.jpg",
@@ -42,8 +42,8 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "The Johnson Family",
-    location: "Denver, Colorado",
+    name: "Demir Ailesi",
+    location: "İstanbul, Türkiye",
     model: "Nova",
     image: "/family-portrait-parents-children-outdoor-happy-war.jpg",
     homeImage: "/nova-tiny-house-family-home-exterior.jpg",
@@ -58,8 +58,8 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "David Park",
-    location: "Seattle, Washington",
+    name: "Can Özkan",
+    location: "Bursa, Türkiye",
     model: "Horizon",
     image: "/man-portrait-outdoor-adventure-traveler.jpg",
     homeImage: "/horizon-tiny-house-on-wheels-travel.jpg",
@@ -74,8 +74,8 @@ const testimonials = [
   },
   {
     id: 5,
-    name: "Lisa & James Miller",
-    location: "Asheville, North Carolina",
+    name: "Fatma & Ali Şahin",
+    location: "İstanbul, Türkiye",
     model: "Terra",
     image: "/mature-couple-portrait-nature-outdoor.jpg",
     homeImage: "/terra-tiny-house-green-roof-eco.jpg",
@@ -90,8 +90,8 @@ const testimonials = [
   },
   {
     id: 6,
-    name: "Alex Thompson",
-    location: "San Diego, California",
+    name: "Emre Doğan",
+    location: "Bursa, Türkiye",
     model: "Lux",
     image: "/young-professional-portrait-modern-style.jpg",
     homeImage: "/lux-tiny-house-luxury-interior-premium.jpg",

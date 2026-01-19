@@ -12,6 +12,7 @@ import {
   Users,
   Eye,
   ImageIcon,
+  FolderOpen,
   Star,
   Calendar,
   BarChart3,
@@ -37,6 +38,7 @@ import AnalyticsPanel from './analytics-panel'
 import SettingsPanel from './settings-panel'
 import SeoPanel from './seo-panel'
 import ContentPanel from './content-panel'
+import GalleryPanel from './gallery-panel'
 
 type AdminDashboardProps = {
   user: any
@@ -73,6 +75,7 @@ export default function AdminDashboard({
     { id: 'models', icon: Box, label: 'Modeller' },
     { id: 'testimonials', icon: Star, label: 'Referanslar' },
     { id: 'portfolio', icon: ImageIcon, label: 'Portföy' },
+    { id: 'gallery', icon: ImageIcon, label: 'Galeri' },
     { id: 'analytics', icon: BarChart3, label: 'İstatistikler' },
     { id: 'content', icon: Users, label: 'İçerik' },
     { id: 'settings', icon: Settings, label: 'Ayarlar' },
@@ -280,6 +283,7 @@ export default function AdminDashboard({
               {activeTab === 'models' && <ModelsPanel models={initialModels} />}
               {activeTab === 'testimonials' && <TestimonialsPanel testimonials={initialTestimonials} />}
               {activeTab === 'portfolio' && <PortfolioPanel projects={initialProjects} />}
+              {activeTab === 'gallery' && <GalleryPanel />}
               {activeTab === 'analytics' && <AnalyticsPanel analytics={initialAnalytics} />}
               {activeTab === 'content' && <ContentPanel />}
               {activeTab === 'settings' && <SettingsPanel />}
