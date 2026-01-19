@@ -109,7 +109,7 @@ export function PhilosophyPreview() {
         className="absolute -right-20 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full overflow-hidden opacity-20 hidden xl:block"
       >
         <img
-          src="/sustainable-forest-trees-aerial-view-green-nature.jpg"
+          src="/sustainable-forest-trees-aerial-view-green-nature.webp"
           alt="Sustainable forest"
           className="w-full h-full object-cover"
         />

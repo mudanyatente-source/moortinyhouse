@@ -9,22 +9,22 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 
 // Public klasöründeki mevcut fotoğraflar
 const availableImages = [
-  '/luxury-modern-tiny-house-exterior-wood-siding-larg.jpg',
-  '/luxury-modern-tiny-house-interior-bedroom-with-lar.jpg',
-  '/luxury-tiny-house-interior-living-room-modern-desi.jpg',
-  '/luxury-tiny-house-bedroom-loft-cozy-lighting.jpg',
-  '/luxury-tiny-house-kitchen-modern-appliances.jpg',
-  '/modern-tiny-house-family-home-exterior-porch-garde.jpg',
-  '/minimalist-tiny-house-japanese-inspired-exterior-p.jpg',
-  '/minimalist-tiny-house-zen-interior-meditation-spac.jpg',
-  '/minimalist-tiny-house-bedroom-natural-light-simple.jpg',
-  '/beautiful-modern-tiny-house-in-nature-forest-setti.jpg',
-  '/cozy-tiny-house-family-space-open-plan-living-room.jpg',
-  '/horizon-tiny-house-on-wheels-travel.jpg',
-  '/lux-tiny-house-luxury-interior-premium.jpg',
-  '/nova-tiny-house-family-home-exterior.jpg',
-  '/terra-tiny-house-green-roof-eco.jpg',
-  '/zen-tiny-house-interior-meditation-space-bamboo.jpg',
+  '/luxury-modern-tiny-house-exterior-wood-siding-larg.webp',
+  '/luxury-modern-tiny-house-interior-bedroom-with-lar.webp',
+  '/luxury-tiny-house-interior-living-room-modern-desi.webp',
+  '/luxury-tiny-house-bedroom-loft-cozy-lighting.webp',
+  '/luxury-tiny-house-kitchen-modern-appliances.webp',
+  '/modern-tiny-house-family-home-exterior-porch-garde.webp',
+  '/minimalist-tiny-house-japanese-inspired-exterior-p.webp',
+  '/minimalist-tiny-house-zen-interior-meditation-spac.webp',
+  '/minimalist-tiny-house-bedroom-natural-light-simple.webp',
+  '/beautiful-modern-tiny-house-in-nature-forest-setti.webp',
+  '/cozy-tiny-house-family-space-open-plan-living-room.webp',
+  '/horizon-tiny-house-on-wheels-travel.webp',
+  '/lux-tiny-house-luxury-interior-premium.webp',
+  '/nova-tiny-house-family-home-exterior.webp',
+  '/terra-tiny-house-green-roof-eco.webp',
+  '/zen-tiny-house-interior-meditation-space-bamboo.webp',
 ]
 
 type ImageGallerySelectorProps = {

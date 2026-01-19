@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Send, Calendar, MessageSquare, Users } from "lucide-react"
 import { Navigation } from "@/components/navigation"
@@ -21,23 +21,45 @@ export default function ContactClient() {
   const [inquiryType, setInquiryType] = useState("general")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [mapHtml, setMapHtml] = useState<string>("")
+  const [isMounted, setIsMounted] = useState(false)
 
-  const email = company_info.email || "hello@moortinyhouse.com"
-  const phone = company_info.phone || "+1 (555) 123-4567"
-  const address = company_info.address || "Portland, Oregon"
+  const email = company_info?.email || "hello@moortinyhouse.com"
+  const phone = company_info?.phone || "+1 (555) 123-4567"
+  const address = company_info?.address || "Portland, Oregon"
 
-  // Make embedded iframe fill the container
-  const mapHtml = (() => {
-    const html = (map.embed_html || "").trim()
-    if (!html) return ""
+  // Set mounted state after hydration
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Process map HTML only on client-side after mount
+  useEffect(() => {
+    if (!isMounted) return
+
+    const html = (map?.embed_html || "").trim()
+    if (!html) {
+      setMapHtml("")
+      return
+    }
+
+    let processed = html
     if (html.includes("<iframe")) {
       if (!/style\s*=/.test(html)) {
-        return html.replace(/<iframe\b/i, '<iframe style="border:0;width:100%;height:100%;"')
+        processed = html.replace(/<iframe\b/i, '<iframe style="border:0;width:100%;height:100%;"')
+      } else {
+        processed = html.replace(/style\s*=\s*(['"])(.*?)\1/i, (_m, q, styles) => `style=${q}${styles};border:0;width:100%;height:100%;${q}`)
       }
-      return html.replace(/style\s*=\s*(['"])(.*?)\1/i, (_m, q, styles) => `style=${q}${styles};border:0;width:100%;height:100%;${q}`)
     }
-    return html
-  })()
+    setMapHtml(processed)
+  }, [map?.embed_html, isMounted])
+
+  // Debug: Log settings in development
+  useEffect(() => {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+      console.log('[Contact] Settings:', { company_info, map, mapHtml, isMounted })
+    }
+  }, [company_info, map, mapHtml, isMounted])
 
   const contactMethods = [
     {
@@ -59,7 +81,7 @@ export default function ContactClient() {
       titleKey: "contact.visit.title",
       descKey: "contact.visit.desc",
       value: address,
-      href: mapHtml ? "#map" : "#",
+      href: (isMounted && mapHtml) ? "#map" : "#",
     },
   ]
 
@@ -251,7 +273,7 @@ export default function ContactClient() {
             <RevealAnimation delay={0.2}>
               <div className="relative">
                 <div className="aspect-square rounded-2xl overflow-hidden">
-                  <img src="/modern-tiny-house-showroom-interior.jpg" alt="Our showroom" className="w-full h-full object-cover" />
+                  <img src="/modern-tiny-house-showroom-interior.webp" alt="Our showroom" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute bottom-6 left-6 right-6 bg-background/90 backdrop-blur-sm rounded-xl p-6">
                   <h3 className="font-semibold mb-2">{t("contact.showroom.title")}</h3>
@@ -275,13 +297,17 @@ export default function ContactClient() {
       <section className="pb-32" id="map">
         <div className="container mx-auto px-6">
           <RevealAnimation>
-            {mapHtml ? (
+            {isMounted && mapHtml && mapHtml.trim().length > 0 ? (
               <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-muted">
-                <div className="absolute inset-0" dangerouslySetInnerHTML={{ __html: mapHtml }} />
+                <div 
+                  key={mapHtml.substring(0, 100)} 
+                  className="absolute inset-0" 
+                  dangerouslySetInnerHTML={{ __html: mapHtml }}
+                />
               </div>
             ) : (
               <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-muted">
-                <img src="/map-location-portland-oregon.jpg" alt="Location map" className="w-full h-full object-cover" />
+                <img src="/map-location-portland-oregon.webp" alt="Location map" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}

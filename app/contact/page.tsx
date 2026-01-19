@@ -4,6 +4,9 @@ import { getPageMetadata } from "@/lib/page-seo"
 import ContactClient from "./contact-client"
 import { SeoSchema } from "@/components/seo-schema"
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
   return getPageMetadata(settings, 'contact', 'tr')

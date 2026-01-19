@@ -46,7 +46,7 @@ export default function PhilosophyPage() {
           style={{ y }}
           className="absolute right-0 top-32 w-1/2 h-[600px] rounded-s-3xl overflow-hidden opacity-30 hidden lg:block"
         >
-          <img src="/craftsman-building-tiny-house-workshop.jpg" alt="Craftsman at work" className="w-full h-full object-cover" />
+          <img src="/craftsman-building-tiny-house-workshop.webp" alt="Craftsman at work" className="w-full h-full object-cover" />
         </motion.div>
 
         <div className="container mx-auto px-6 relative z-10">

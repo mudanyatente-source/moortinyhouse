@@ -32,3 +32,23 @@ export async function createServerClient() {
     },
   );
 }
+
+/**
+ * Create a Supabase client without cookies (for use in generateStaticParams)
+ */
+export function createServerClientWithoutCookies() {
+  return createSupabaseServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return [];
+        },
+        setAll() {
+          // No-op for static generation
+        },
+      },
+    },
+  );
+}

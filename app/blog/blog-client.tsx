@@ -18,7 +18,7 @@ const blogPosts = [
     readTime: "5 dk",
     category: "Rehber",
     slug: "tiny-house-nedir-2024-rehberi",
-    featuredImage: "/beautiful-modern-tiny-house-in-nature-forest-setti.jpg"
+    featuredImage: "/beautiful-modern-tiny-house-in-nature-forest-setti.webp"
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const blogPosts = [
     readTime: "7 dk",
     category: "Fiyatlandırma",
     slug: "tiny-house-fiyatlari-detayli-fiyat-listesi",
-    featuredImage: "/luxury-premium-tiny-house-modern-architecture-high.jpg"
+    featuredImage: "/luxury-premium-tiny-house-modern-architecture-high.webp"
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const blogPosts = [
     readTime: "6 dk",
     category: "Lokal Rehber",
     slug: "istanbulda-tiny-house-yasami-rehber",
-    featuredImage: "/sustainable-forest-trees-aerial-view-green-nature.jpg"
+    featuredImage: "/sustainable-forest-trees-aerial-view-green-nature.webp"
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const blogPosts = [
     readTime: "5 dk",
     category: "Lokal Rehber",
     slug: "bursada-tiny-house-yerlesim-alanlari",
-    featuredImage: "/eco-tiny-house-earth-integrated-green-roof-natural.jpg"
+    featuredImage: "/eco-tiny-house-earth-integrated-green-roof-natural.webp"
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const blogPosts = [
     readTime: "8 dk",
     category: "Karşılaştırma",
     slug: "tiny-house-vs-prefabrik-ev-karsilastirma",
-    featuredImage: "/modern-tiny-house-showroom-interior.jpg"
+    featuredImage: "/modern-tiny-house-showroom-interior.webp"
   },
   {
     id: 6,
@@ -68,7 +68,7 @@ const blogPosts = [
     readTime: "6 dk",
     category: "Yasal",
     slug: "tiny-house-ruhsat-ve-yasal-surecler",
-    featuredImage: "/craftsman-building-tiny-house-workshop.jpg"
+    featuredImage: "/craftsman-building-tiny-house-workshop.webp"
   }
 ]
 

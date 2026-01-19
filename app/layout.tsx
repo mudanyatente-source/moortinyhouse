@@ -110,6 +110,9 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -131,12 +134,19 @@ export default async function RootLayout({
         <link rel="alternate" hrefLang="tr" href="https://moortinyhouse.com" />
         <link rel="alternate" hrefLang="en" href="https://moortinyhouse.com/en" />
         <link rel="alternate" hrefLang="x-default" href="https://moortinyhouse.com" />
+        <link
+          rel="preload"
+          href="/beautiful-modern-tiny-house-in-nature-forest-setti.webp"
+          as="image"
+          fetchPriority="high"
+          type="image/webp"
+        />
       </head>
       <body className={`${dmSans.variable} ${playfair.variable} font-sans antialiased`} style={themeStyle}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
           <SiteSettingsProvider settings={siteSettings}>
             <LanguageProvider>
-              <SmoothScrollProvider>
+               <SmoothScrollProvider>
                 <PageViewTracker />
                 {children}
                 <SpeedInsights />

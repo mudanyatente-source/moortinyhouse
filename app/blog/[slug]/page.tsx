@@ -13,7 +13,7 @@ const blogPosts = [
     readTime: "5 dk",
     category: "Rehber",
     slug: "tiny-house-nedir-2024-rehberi",
-    featuredImage: "/beautiful-modern-tiny-house-in-nature-forest-setti.jpg",
+    featuredImage: "/beautiful-modern-tiny-house-in-nature-forest-setti.webp",
     content: `
 ## Tiny House Nedir?
 
@@ -89,7 +89,7 @@ Tiny house, sadece bir ev tipi değil, aynı zamanda bir yaşam felsefesidir. Da
     readTime: "7 dk",
     category: "Fiyatlandırma",
     slug: "tiny-house-fiyatlari-detayli-fiyat-listesi",
-    featuredImage: "/luxury-premium-tiny-house-modern-architecture-high.jpg",
+    featuredImage: "/luxury-premium-tiny-house-modern-architecture-high.webp",
     content: `
 ## Tiny House Fiyatları 2024
 
@@ -150,7 +150,7 @@ Tiny house, geleneksel konut seçeneklerine göre çok daha ekonomik bir alterna
     readTime: "6 dk",
     category: "Lokal Rehber",
     slug: "istanbulda-tiny-house-yasami-rehber",
-    featuredImage: "/sustainable-forest-trees-aerial-view-green-nature.jpg",
+    featuredImage: "/sustainable-forest-trees-aerial-view-green-nature.webp",
     content: `
 ## İstanbul'da Tiny House Yaşamı
 
@@ -189,7 +189,7 @@ Tiny house, geleneksel konut seçeneklerine göre çok daha ekonomik bir alterna
     readTime: "5 dk",
     category: "Lokal Rehber",
     slug: "bursada-tiny-house-yerlesim-alanlari",
-    featuredImage: "/eco-tiny-house-earth-integrated-green-roof-natural.jpg",
+    featuredImage: "/eco-tiny-house-earth-integrated-green-roof-natural.webp",
     content: `
 ## Bursa'da Tiny House Yerleşim Alanları
 
@@ -226,7 +226,7 @@ Bursa, tiny house yaşamı için Türkiye'nin en uygun şehirlerinden biridir.
     readTime: "8 dk",
     category: "Karşılaştırma",
     slug: "tiny-house-vs-prefabrik-ev-karsilastirma",
-    featuredImage: "/modern-tiny-house-showroom-interior.jpg",
+    featuredImage: "/modern-tiny-house-showroom-interior.webp",
     content: `
 ## Tiny House vs Prefabrik Ev
 
@@ -261,7 +261,7 @@ Seçim, kişisel ihtiyaçlarınıza ve bütçenize bağlıdır.
     readTime: "6 dk",
     category: "Yasal",
     slug: "tiny-house-ruhsat-ve-yasal-surecler",
-    featuredImage: "/craftsman-building-tiny-house-workshop.jpg",
+    featuredImage: "/craftsman-building-tiny-house-workshop.webp",
     content: `
 ## Tiny House Ruhsat ve Yasal Süreçler
 

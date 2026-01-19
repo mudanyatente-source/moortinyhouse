@@ -8,6 +8,7 @@ import { MagneticButton } from "@/components/magnetic-button"
 import { RevealAnimation } from "@/components/reveal-animation"
 import { useLanguage } from "@/lib/i18n"
 import Link from "next/link"
+import Image from "next/image"
 
 export function HeroSection() {
   const { t } = useLanguage()
@@ -30,10 +31,15 @@ export function HeroSection() {
     <section ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Parallax */}
       <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
-        <img
-          src="/beautiful-modern-tiny-house-in-nature-forest-setti.jpg"
+        <Image
+          src="/beautiful-modern-tiny-house-in-nature-forest-setti.webp"
           alt="Beautiful tiny house in nature"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40 z-10 dark:from-black/50 dark:via-black/40 dark:to-black/60" />
       </motion.div>
@@ -43,7 +49,7 @@ export function HeroSection() {
         <div className="max-w-4xl">
           <RevealAnimation>
             <motion.span
-              className="inline-block text-sm font-medium tracking-widest uppercase text-white mb-6 drop-shadow-md"
+              className="inline-block text-sm font-medium tracking-widest uppercase text-white dark:text-white mb-6 drop-shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}

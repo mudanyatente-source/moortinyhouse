@@ -17,7 +17,7 @@ export function CTASection() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80 z-10" />
         <img
-          src="/beautiful-tiny-house-sunset-mountains-scenic-view-.jpg"
+          src="/beautiful-tiny-house-sunset-mountains-scenic-view-.webp"
           alt="Tiny house at sunset"
           className="w-full h-full object-cover"
         />

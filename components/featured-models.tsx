@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, Users, Maximize2, Leaf } from "lucide-react"
 import { RevealAnimation } from "@/components/reveal-animation"
@@ -9,39 +10,30 @@ import { MagneticButton } from "@/components/magnetic-button"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/i18n"
 
-const models = [
-  {
-    id: 1,
-    slug: "aura",
-    nameKey: "model.aura.name",
-    taglineKey: "model.aura.tagline",
-    descriptionKey: "model.aura.description",
-    image: "/luxury-modern-tiny-house-interior-bedroom-with-lar.jpg",
-    specs: { sqft: "320", capacity: "2-3", eco: "A+" },
-  },
-  {
-    id: 2,
-    slug: "nova",
-    nameKey: "model.nova.name",
-    taglineKey: "model.nova.tagline",
-    descriptionKey: "model.nova.description",
-    image: "/cozy-tiny-house-family-space-open-plan-living-room.jpg",
-    specs: { sqft: "450", capacity: "4-5", eco: "A+" },
-  },
-  {
-    id: 3,
-    slug: "zen",
-    nameKey: "model.zen.name",
-    taglineKey: "model.zen.tagline",
-    descriptionKey: "model.zen.description",
-    image: "/minimalist-tiny-house-zen-interior-meditation-spac.jpg",
-    specs: { sqft: "220", capacity: "1-2", eco: "A++" },
-  },
-]
+interface FeaturedModel {
+  id: string
+  slug: string
+  name_tr: string
+  name_en: string
+  tagline_tr: string
+  tagline_en: string
+  description_tr: string
+  description_en: string
+  image: string
+  specs: {
+    sqm: number
+    capacity: string
+    eco: string
+  }
+}
 
-export function FeaturedModels() {
-  const { t } = useLanguage()
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
+interface FeaturedModelsProps {
+  models?: FeaturedModel[]
+}
+
+export function FeaturedModels({ models: featuredModels = [] }: FeaturedModelsProps) {
+  const { t, language } = useLanguage()
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -49,6 +41,15 @@ export function FeaturedModels() {
   })
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"])
+
+  // If no models from database, show empty state
+  if (featuredModels.length === 0) {
+    return null
+  }
+
+  const getModelName = (model: FeaturedModel) => language === 'tr' ? model.name_tr : model.name_en
+  const getModelTagline = (model: FeaturedModel) => language === 'tr' ? model.tagline_tr : model.tagline_en
+  const getModelDescription = (model: FeaturedModel) => language === 'tr' ? model.description_tr : model.description_en
 
   return (
     <section ref={containerRef} className="py-32 overflow-hidden">
@@ -77,7 +78,7 @@ export function FeaturedModels() {
         </RevealAnimation>
 
         <motion.div style={{ x }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {models.map((model, i) => (
+          {featuredModels.map((model, i) => (
             <RevealAnimation key={model.id} delay={i * 0.15}>
               <motion.article
                 onMouseEnter={() => setHoveredId(model.id)}
@@ -86,15 +87,22 @@ export function FeaturedModels() {
               >
                 <Link href={`/models/${model.slug}`}>
                   <div className="relative aspect-[3/4] rounded-2xl overflow-hidden mb-6">
-                    <motion.img
-                      src={model.image}
-                      alt={t(model.nameKey)}
-                      className="w-full h-full object-cover"
+                    <motion.div
                       animate={{
                         scale: hoveredId === model.id ? 1.05 : 1,
                       }}
                       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    />
+                      className="relative w-full h-full"
+                    >
+                      <Image
+                        src={model.image}
+                        alt={getModelName(model)}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={i < 2}
+                      />
+                    </motion.div>
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
 
                     {/* Specs Overlay */}
@@ -111,7 +119,7 @@ export function FeaturedModels() {
                         <div className="flex items-center gap-1.5">
                           <Maximize2 className="w-4 h-4" />
                           <span className="text-sm">
-                            {model.specs.sqft} {t("featured.sqft")}
+                            {model.specs.sqm}m²
                           </span>
                         </div>
                         <div className="flex items-center gap-1.5">
@@ -128,12 +136,12 @@ export function FeaturedModels() {
 
                   <div>
                     <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground">
-                      {t(model.taglineKey)}
+                      {getModelTagline(model)}
                     </span>
                     <h3 className="text-2xl font-serif font-medium mt-2 mb-3 group-hover:text-accent transition-colors">
-                      {t(model.nameKey)}
+                      {getModelName(model)}
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{t(model.descriptionKey)}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">{getModelDescription(model)}</p>
                   </div>
                 </Link>
               </motion.article>

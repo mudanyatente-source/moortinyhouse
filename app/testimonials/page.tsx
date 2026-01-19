@@ -13,8 +13,8 @@ const testimonials = [
     name: "Ayşe & Mehmet Yılmaz",
     location: "İstanbul, Türkiye",
     model: "Aura",
-    image: "/happy-couple-portrait-outdoor-natural-light-smilin.jpg",
-    homeImage: "/modern-tiny-house-aura-model-exterior.jpg",
+    image: "/happy-couple-portrait-outdoor-natural-light-smilin.webp",
+    homeImage: "/modern-tiny-house-aura-model-exterior.webp",
     quoteEn:
       "Moving into our Moortinyhouse was the best decision we ever made. The quality of craftsmanship exceeded all our expectations. We've reduced our carbon footprint by 60% and increased our quality of life exponentially.",
     quoteTr:
@@ -29,8 +29,8 @@ const testimonials = [
     name: "Zeynep Kaya",
     location: "Bursa, Türkiye",
     model: "Zen",
-    image: "/young-woman-portrait-outdoor-nature-happy-lifestyl.jpg",
-    homeImage: "/zen-tiny-house-minimalist-interior.jpg",
+    image: "/young-woman-portrait-outdoor-nature-happy-lifestyl.webp",
+    homeImage: "/zen-tiny-house-minimalist-interior.webp",
     quoteEn:
       "As a digital nomad, the Zen model is perfect. It's my sanctuary that I can take anywhere. The design is brilliant - every inch is thoughtfully utilized. I've never felt more at home.",
     quoteTr:
@@ -45,8 +45,8 @@ const testimonials = [
     name: "Demir Ailesi",
     location: "İstanbul, Türkiye",
     model: "Nova",
-    image: "/family-portrait-parents-children-outdoor-happy-war.jpg",
-    homeImage: "/nova-tiny-house-family-home-exterior.jpg",
+    image: "/family-portrait-parents-children-outdoor-happy-war.webp",
+    homeImage: "/nova-tiny-house-family-home-exterior.webp",
     quoteEn:
       "We were skeptical about raising two kids in a tiny house, but the Nova model changed everything. Our family has never been closer, and the kids absolutely love their cozy loft spaces. Best investment we've ever made.",
     quoteTr:
@@ -61,8 +61,8 @@ const testimonials = [
     name: "Can Özkan",
     location: "Bursa, Türkiye",
     model: "Horizon",
-    image: "/man-portrait-outdoor-adventure-traveler.jpg",
-    homeImage: "/horizon-tiny-house-on-wheels-travel.jpg",
+    image: "/man-portrait-outdoor-adventure-traveler.webp",
+    homeImage: "/horizon-tiny-house-on-wheels-travel.webp",
     quoteEn:
       "The Horizon model has allowed me to live my dream of traveling while working remotely. The build quality is exceptional - it handles every road condition perfectly. I've visited 23 states so far!",
     quoteTr:
@@ -77,8 +77,8 @@ const testimonials = [
     name: "Fatma & Ali Şahin",
     location: "İstanbul, Türkiye",
     model: "Terra",
-    image: "/mature-couple-portrait-nature-outdoor.jpg",
-    homeImage: "/terra-tiny-house-green-roof-eco.jpg",
+    image: "/mature-couple-portrait-nature-outdoor.webp",
+    homeImage: "/terra-tiny-house-green-roof-eco.webp",
     quoteEn:
       "After 30 years in a traditional home, downsizing to the Terra was liberating. The earth-integrated design keeps us cool in summer and warm in winter naturally. Our energy bills are practically zero.",
     quoteTr:
@@ -93,8 +93,8 @@ const testimonials = [
     name: "Emre Doğan",
     location: "Bursa, Türkiye",
     model: "Lux",
-    image: "/young-professional-portrait-modern-style.jpg",
-    homeImage: "/lux-tiny-house-luxury-interior-premium.jpg",
+    image: "/young-professional-portrait-modern-style.webp",
+    homeImage: "/lux-tiny-house-luxury-interior-premium.webp",
     quoteEn:
       "I didn't want to compromise on luxury, and with the Lux model, I didn't have to. Smart home integration, premium materials, dual bathrooms - it's a boutique hotel I get to call home.",
     quoteTr:

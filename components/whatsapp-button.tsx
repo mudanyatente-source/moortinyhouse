@@ -27,9 +27,14 @@ export function WhatsAppButton() {
   const phone = company_info?.phone || ""
   const whatsappNumber = formatPhoneForWhatsApp(phone)
   const whatsappMessage = encodeURIComponent("Merhaba, tiny house hakkında bilgi almak istiyorum.")
-  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/\+/g, "")}?text=${whatsappMessage}`
+  const whatsappUrl = whatsappNumber ? `https://wa.me/${whatsappNumber.replace(/\+/g, "")}?text=${whatsappMessage}` : "#"
 
-  if (!phone) return null
+  // Debug: Log phone number to console (remove in production)
+  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log('[WhatsApp] Phone from settings:', phone, 'Formatted:', whatsappNumber)
+  }
+
+  if (!phone || !whatsappNumber) return null
 
   return (
     <motion.a

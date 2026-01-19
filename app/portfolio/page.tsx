@@ -16,7 +16,7 @@ const deliveredHomes = [
     state: "Oregon",
     model: "Aura",
     year: 2024,
-    images: ["/aura-tiny-house-portland-forest.jpg", "/aura-tiny-house-interior-living-room.jpg", "/aura-tiny-house-kitchen-modern.jpg"],
+    images: ["/aura-tiny-house-portland-forest.webp", "/aura-tiny-house-interior-living-room.webp", "/aura-tiny-house-kitchen-modern.webp"],
     descEn:
       "Nestled in the Pacific Northwest forests, this Aura model features custom cedar finishes and a meditation deck overlooking the trees.",
     descTr:

@@ -9,6 +9,7 @@ interface SeoSchemaProps {
     description: string
     price?: number
     image?: string
+    slug?: string
   }
 }
 
@@ -151,7 +152,7 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
         '@type': 'ListItem',
         position: 3,
         name: modelData.name,
-        item: `${siteUrl}/models/${modelData.name.toLowerCase().replace(/\s+/g, '-')}`
+        item: `${siteUrl}/models/${(modelData as any).slug || modelData.name.toLowerCase().replace(/\s+/g, '-')}`
       }
     ]
   } : null
