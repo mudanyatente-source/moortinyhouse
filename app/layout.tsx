@@ -141,6 +141,14 @@ export default async function RootLayout({
           fetchPriority="high"
           type="image/webp"
         />
+
+        <link rel="icon" href="/favicon.png" sizes="32x32" />
+  
+        {/* Safari ve iOS için (Apple Touch Icon) */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />a
+        
+        {/* Eski Tarayıcı Desteği */}
+        <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body className={`${dmSans.variable} ${playfair.variable} font-sans antialiased`} style={themeStyle}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
