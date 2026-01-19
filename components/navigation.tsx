@@ -82,14 +82,6 @@ export function Navigation() {
 
           <div className="flex items-center gap-2">
             <MagneticButton>
-              <Link href="/admin">
-                <Button variant="ghost" size="icon" className="rounded-full" aria-label="Admin Panel">
-                  <Shield className="h-5 w-5" />
-                </Button>
-              </Link>
-            </MagneticButton>
-
-            <MagneticButton>
               <LanguageSwitcher />
             </MagneticButton>
 
