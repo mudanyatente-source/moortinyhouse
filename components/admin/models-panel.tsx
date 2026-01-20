@@ -21,6 +21,13 @@ type ModelsPanelProps = {
   models: any[]
 }
 
+type GalleryImage = {
+  path: string
+  name: string
+  category: string
+  url: string
+}
+
 // Slug oluşturma fonksiyonu
 function createSlug(text: string): string {
   return text
@@ -91,6 +98,11 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
   const [loading, setLoading] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [showGallery, setShowGallery] = useState(false)
+  const [galleryDefaultCategory, setGalleryDefaultCategory] = useState<string | undefined>(undefined)
+  const [folderImages, setFolderImages] = useState<GalleryImage[]>([])
+  const [folderImagesLoading, setFolderImagesLoading] = useState(false)
+  const [allGalleryImages, setAllGalleryImages] = useState<GalleryImage[]>([])
+  const [allGalleryLoading, setAllGalleryLoading] = useState(false)
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false)
   const [modelToDelete, setModelToDelete] = useState<string | null>(null)
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
@@ -124,6 +136,52 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
   const supabase = createBrowserClient()
   const router = useRouter()
 
+  const folderNameForSlug = (slug: string) => {
+    const s = (slug || '').toLowerCase().trim()
+    if (!s) return ''
+    return s === 'beverly' ? 'baverly' : s
+  }
+
+  const loadAllGalleryImages = async () => {
+    setAllGalleryLoading(true)
+    try {
+      const res = await fetch('/api/gallery')
+      const data = await res.json()
+      const imgs = (data?.images || []) as GalleryImage[]
+      setAllGalleryImages(imgs)
+    } catch {
+      setAllGalleryImages([])
+    } finally {
+      setAllGalleryLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadAllGalleryImages()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const loadFolderImages = async (slug: string) => {
+    const folder = folderNameForSlug(slug)
+    if (!folder) {
+      setFolderImages([])
+      return
+    }
+    setFolderImagesLoading(true)
+    try {
+      const res = await fetch('/api/gallery')
+      const data = await res.json()
+      const imgs = ((data?.images || []) as GalleryImage[]).filter((img) => img.category === folder)
+      // Stable ordering
+      imgs.sort((a, b) => (a.name || a.url).localeCompare(b.name || b.url))
+      setFolderImages(imgs)
+    } catch {
+      setFolderImages([])
+    } finally {
+      setFolderImagesLoading(false)
+    }
+  }
+
   // Sadece slug'ı otomatik oluştur (İngilizce çeviri yok)
   useEffect(() => {
     if (!formData.name_tr || slugEdited) return
@@ -133,6 +191,42 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
       slug
     }))
   }, [formData.name_tr, slugEdited])
+
+  // Dialog açıkken slug'a göre klasör fotoğraflarını getir
+  useEffect(() => {
+    if (!isDialogOpen) return
+    if (!formData.slug) {
+      setFolderImages([])
+      return
+    }
+    loadFolderImages(formData.slug)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isDialogOpen, formData.slug])
+
+  const updateCoverImage = async (modelId: string, imageUrl: string) => {
+    if (!modelId || !imageUrl) return
+    try {
+      const { error } = await supabase
+        .from('models')
+        .update({ main_image: imageUrl })
+        .eq('id', modelId)
+
+      if (error) throw error
+
+      setModels((prev) => prev.map((m) => (m.id === modelId ? { ...m, main_image: imageUrl } : m)))
+      toast({
+        title: 'Kapak güncellendi',
+        description: 'Kapak fotoğrafı kaydedildi.',
+      })
+      router.refresh()
+    } catch (e: any) {
+      toast({
+        title: 'Kapak güncellenemedi',
+        description: e?.message || 'Bir hata oluştu.',
+        variant: 'destructive',
+      })
+    }
+  }
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -193,6 +287,8 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
         .getPublicUrl(filePath)
 
       setFormData(prev => ({ ...prev, main_image: publicUrl }))
+      // If editing an existing model, persist immediately
+      if (editingModel?.id) await updateCoverImage(editingModel.id, publicUrl)
       toast({
         title: 'Başarılı!',
         description: 'Fotoğraf başarıyla yüklendi.',
@@ -228,6 +324,8 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
       })
       setFeatureInput('')
       setSlugEdited(true)
+      const folder = folderNameForSlug(model.slug || '')
+      setGalleryDefaultCategory(folder || undefined)
     } else {
       setEditingModel(null)
       setFormData({
@@ -246,6 +344,7 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
       })
       setFeatureInput('')
       setSlugEdited(false)
+      setGalleryDefaultCategory(undefined)
     }
     setIsDialogOpen(true)
   }
@@ -458,6 +557,45 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
                 {model.bathrooms && <span>{model.bathrooms} banyo</span>}
               </div>
 
+              {/* Klasördeki çoklu fotoğraflar + tek tıkla kapak değiştirme */}
+              <div className="mb-4">
+                {allGalleryLoading ? (
+                  <p className="text-xs text-muted-foreground">Fotoğraflar yükleniyor...</p>
+                ) : (
+                  (() => {
+                    const folder = folderNameForSlug(model.slug || '')
+                    const imgs = allGalleryImages
+                      .filter((img) => img.category === folder)
+                      .sort((a, b) => (a.name || a.url).localeCompare(b.name || b.url))
+                      .slice(0, 8)
+
+                    if (!folder || imgs.length === 0) return null
+
+                    return (
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-2">
+                          Fotoğraflar ({folder}) — kapak yapmak için tıkla
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {imgs.map((img) => (
+                            <button
+                              key={img.url}
+                              type="button"
+                              className={`relative h-12 w-12 rounded-md overflow-hidden border transition-colors ${
+                                model.main_image === img.url ? 'border-accent ring-2 ring-accent/20' : 'border-border hover:border-accent/50'
+                              }`}
+                              onClick={() => updateCoverImage(model.id, img.url)}
+                              title="Kapak yap"
+                            >
+                              <Image src={img.url} alt={img.name} fill className="object-cover" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  })()
+                )}
+              </div>
 
               <div className="flex gap-2">
                 <Button
@@ -716,13 +854,72 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
                     type="button"
                     variant="outline"
                     className="h-32 flex flex-col items-center justify-center gap-2"
-                    onClick={() => setShowGallery(true)}
+                    onClick={() => {
+                      setGalleryDefaultCategory(folderNameForSlug(formData.slug) || undefined)
+                      setShowGallery(true)
+                    }}
                   >
                     <svg className="w-8 h-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     <span className="text-sm font-semibold">Galeriden Seç</span>
                   </Button>
+                </div>
+
+                {/* Model klasörü fotoğrafları (çoklu fotoğraf görünümü + kapak seçimi) */}
+                <div className="mt-3 rounded-lg border border-border p-3">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Label className="m-0">Model Fotoğrafları</Label>
+                      {formData.slug ? (
+                        <span className="text-xs text-muted-foreground">
+                          ({folderNameForSlug(formData.slug)} / {folderImages.length})
+                        </span>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">(slug oluşturunca görünür)</span>
+                      )}
+                    </div>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="outline"
+                      disabled={!formData.slug}
+                      onClick={() => {
+                        setGalleryDefaultCategory(folderNameForSlug(formData.slug) || undefined)
+                        setShowGallery(true)
+                      }}
+                    >
+                      Klasörden Seç
+                    </Button>
+                  </div>
+
+                  {folderImagesLoading ? (
+                    <p className="text-xs text-muted-foreground">Klasör fotoğrafları yükleniyor...</p>
+                  ) : folderImages.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">
+                      Bu model için <code className="px-1 rounded bg-muted">public/{folderNameForSlug(formData.slug || 'slug')}</code> altında
+                      fotoğraf bulunamadı.
+                    </p>
+                  ) : (
+                    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+                      {folderImages.slice(0, 16).map((img) => (
+                        <button
+                          key={img.url}
+                          type="button"
+                          className={`relative aspect-square rounded-md overflow-hidden border transition-colors ${
+                            formData.main_image === img.url ? 'border-accent ring-2 ring-accent/20' : 'border-border hover:border-accent/50'
+                          }`}
+                          onClick={async () => {
+                            setFormData((prev) => ({ ...prev, main_image: img.url }))
+                            if (editingModel?.id) await updateCoverImage(editingModel.id, img.url)
+                          }}
+                          title="Kapak yapmak için tıkla"
+                        >
+                          <Image src={img.url} alt={img.name} fill className="object-cover" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 
                 <Input
@@ -737,7 +934,11 @@ export default function ModelsPanel({ models: initialModels }: ModelsPanelProps)
               isOpen={showGallery}
               onClose={() => setShowGallery(false)}
               selectedImage={formData.main_image}
-              onSelect={(imageUrl) => setFormData({ ...formData, main_image: imageUrl })}
+              onSelect={async (imageUrl) => {
+                setFormData({ ...formData, main_image: imageUrl })
+                if (editingModel?.id) await updateCoverImage(editingModel.id, imageUrl)
+              }}
+              defaultCategory={galleryDefaultCategory}
             />
 
             <div className="md:col-span-2">

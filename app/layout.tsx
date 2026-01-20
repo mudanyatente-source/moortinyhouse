@@ -142,13 +142,11 @@ export default async function RootLayout({
           type="image/webp"
         />
 
-        <link rel="icon" href="/favicon.png" sizes="32x32" />
-  
-        {/* Safari ve iOS için (Apple Touch Icon) */}
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />a
-        
-        {/* Eski Tarayıcı Desteği */}
-        <link rel="shortcut icon" href="/favicon.ico" />
+        {/* Favicons */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${dmSans.variable} ${playfair.variable} font-sans antialiased`} style={themeStyle}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
