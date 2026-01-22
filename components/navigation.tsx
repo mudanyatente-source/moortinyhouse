@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sun, Moon, Shield } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { MagneticButton } from "@/components/magnetic-button"
@@ -164,21 +164,7 @@ export function Navigation() {
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.1 }}
-                >
-                  <Link
-                    href="/admin"
-                    onClick={() => setIsOpen(false)}
-                    className="text-3xl font-serif font-medium hover:text-accent transition-colors flex items-center gap-3"
-                  >
-                    <Shield className="w-6 h-6" />
-                    {t("nav.admin")}
-                  </Link>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (navLinks.length + 1) * 0.1 }}
+                  transition={{ delay: (navLinks.length) * 0.1 }}
                   className="pt-6"
                 >
                   <Link href="/contact" onClick={() => setIsOpen(false)}>
