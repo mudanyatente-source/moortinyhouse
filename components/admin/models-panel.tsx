@@ -16,6 +16,7 @@ import { ImageGallerySelector } from './image-gallery-selector'
 import { useToast } from '@/hooks/use-toast'
 import { ConfirmationDialog } from './confirmation-dialog'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { revalidateContent } from '@/lib/revalidate-content'
 
 type ModelsPanelProps = {
   models: any[]

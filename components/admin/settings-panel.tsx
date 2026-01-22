@@ -7,12 +7,14 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { createBrowserClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
-import { Save, HelpCircle, Building2, Share2, MapPin, Search } from 'lucide-react'
+import { Save, HelpCircle, Building2, Share2, MapPin, Search, Lock } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { defaultSiteSettings } from '@/lib/site-settings-shared'
+import { contactInfo, mapInfo, socialMedia } from '@/lib/contact-info'
+import { revalidateContent } from '@/lib/revalidate-content'
 
 export default function SettingsPanel() {
   const [settings, setSettings] = useState<any>(defaultSiteSettings)
@@ -92,6 +94,9 @@ export default function SettingsPanel() {
       // Reload settings after save
       await loadSettings()
       router.refresh()
+      
+      // Vercel cache'i temizle - güncellemeler sitede anında görünsün
+      await revalidateContent(['/', '/contact', '/portfolio', '/models', '/philosophy', '/testimonials', '/faq', '/blog'])
     } catch (error: any) {
       console.error('[Settings] Error saving settings:', error)
       toast({
@@ -151,7 +156,7 @@ export default function SettingsPanel() {
           <Card>
             <CardHeader>
               <CardTitle>Şirket Bilgileri</CardTitle>
-              <CardDescription>Web sitesinde görünecek şirket bilgileri</CardDescription>
+              <CardDescription>Web sitesinde görünecek şirket bilgileri (Contact bilgileri dosyadan yönetilir)</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
@@ -173,32 +178,75 @@ export default function SettingsPanel() {
                 />
               </div>
 
+              <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 space-y-4">
+                <div className="flex items-start gap-3">
+                  <Lock className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div className="space-y-3 flex-1">
+                    <p className="font-medium text-blue-900 dark:text-blue-100">Contact Bilgileri Sabit Olarak Yönetilir</p>
+                    <p className="text-sm text-blue-800 dark:text-blue-200">
+                      Email, telefon ve adres bilgileri <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">lib/contact-info.ts</code> dosyasından yönetilir. 
+                      Güncellemek için bu dosyayı düzenleyin.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="space-y-2">
-                <Label>Email</Label>
+                <div className="flex items-center gap-2">
+                  <Label>Email (Dosyadan Yönetilir)</Label>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
                   type="email"
-                  value={settings.company_info?.email || ''}
-                  onChange={(e) => updateSetting('company_info', 'email', e.target.value)}
-                  placeholder="hello@moortinyhouse.com"
+                  value={contactInfo.email}
+                  disabled
+                  className="bg-muted cursor-not-allowed"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label>Telefon</Label>
+                <div className="flex items-center gap-2">
+                  <Label>Telefon (Dosyadan Yönetilir)</Label>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Input
-                  value={settings.company_info?.phone || ''}
-                  onChange={(e) => updateSetting('company_info', 'phone', e.target.value)}
-                  placeholder="+1 (555) 123-4567"
+                  value={contactInfo.phone}
+                  disabled
+                  className="bg-muted cursor-not-allowed"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label>Adres</Label>
+                <div className="flex items-center gap-2">
+                  <Label>Adres (Dosyadan Yönetilir)</Label>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Textarea
-                  value={settings.company_info?.address || ''}
-                  onChange={(e) => updateSetting('company_info', 'address', e.target.value)}
+                  value={contactInfo.address}
+                  disabled
                   rows={3}
-                  placeholder="Portland, Oregon"
+                  className="bg-muted cursor-not-allowed"
                 />
               </div>
             </CardContent>
@@ -209,56 +257,128 @@ export default function SettingsPanel() {
           <Card>
             <CardHeader>
               <CardTitle>Sosyal Medya</CardTitle>
-              <CardDescription>Sosyal medya hesaplarınızın linklerini ekleyin</CardDescription>
+              <CardDescription>Sosyal medya hesaplarınızın linklerini ekleyin (Dosyadan Yönetilir)</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-6">
+              <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 space-y-3">
+                <div className="flex items-start gap-3">
+                  <Lock className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div className="space-y-2 flex-1">
+                    <p className="font-medium text-blue-900 dark:text-blue-100">Sosyal Medya Bağlantıları Sabit Olarak Yönetilir</p>
+                    <p className="text-sm text-blue-800 dark:text-blue-200">
+                      Sosyal medya linkleriniz <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">lib/contact-info.ts</code> dosyasından yönetilir. 
+                      Güncellemek için bu dosyayı düzenleyin.
+                    </p>
+                  </div>
+                </div>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Instagram URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>Instagram URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.instagram || ''}
-                    onChange={(e) => updateSetting('social_media', 'instagram', e.target.value)}
-                    placeholder="https://instagram.com/..."
+                    value={socialMedia.instagram}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Facebook URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>Facebook URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.facebook || ''}
-                    onChange={(e) => updateSetting('social_media', 'facebook', e.target.value)}
-                    placeholder="https://facebook.com/..."
+                    value={socialMedia.facebook}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Twitter URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>Twitter URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.twitter || ''}
-                    onChange={(e) => updateSetting('social_media', 'twitter', e.target.value)}
-                    placeholder="https://twitter.com/..."
+                    value={socialMedia.twitter}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>LinkedIn URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>LinkedIn URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.linkedin || ''}
-                    onChange={(e) => updateSetting('social_media', 'linkedin', e.target.value)}
-                    placeholder="https://linkedin.com/..."
+                    value={socialMedia.linkedin}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>YouTube URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>YouTube URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.youtube || ''}
-                    onChange={(e) => updateSetting('social_media', 'youtube', e.target.value)}
-                    placeholder="https://youtube.com/..."
+                    value={socialMedia.youtube}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>TikTok URL</Label>
+                  <div className="flex items-center gap-2">
+                    <Label>TikTok URL</Label>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </div>
                   <Input
-                    value={settings.social_media?.tiktok || ''}
-                    onChange={(e) => updateSetting('social_media', 'tiktok', e.target.value)}
-                    placeholder="https://tiktok.com/..."
+                    value={socialMedia.tiktok}
+                    disabled
+                    className="bg-muted cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -273,23 +393,46 @@ export default function SettingsPanel() {
               <CardDescription>Google Maps embed kodunu ekleyin. Sadece güvenilir kaynaklardan alınan iframe kodlarını kullanın.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-4 space-y-3">
+                <div className="flex items-start gap-3">
+                  <Lock className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div className="space-y-2 flex-1">
+                    <p className="font-medium text-blue-900 dark:text-blue-100">Harita Kodu Sabit Olarak Yönetilir</p>
+                    <p className="text-sm text-blue-800 dark:text-blue-200">
+                      Google Maps embed kodu <code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">lib/contact-info.ts</code> dosyasından yönetilir. 
+                      Güncellemek için bu dosyayı düzenleyin.
+                    </p>
+                  </div>
+                </div>
+              </div>
               <div className="space-y-2">
-                <Label>Embed Kodu</Label>
+                <div className="flex items-center gap-2">
+                  <Label>Embed Kodu (Dosyadan Yönetilir)</Label>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Lock className="w-4 h-4 text-muted-foreground cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">lib/contact-info.ts dosyasından yönetilir</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
                 <Textarea
-                  value={settings.map?.embed_html || ''}
-                  onChange={(e) => updateSetting('map', 'embed_html', e.target.value)}
+                  value={mapInfo.embed_html || ''}
+                  disabled
                   rows={6}
-                  placeholder='<iframe src="https://www.google.com/maps/embed?..."></iframe>'
-                  className="font-mono text-sm"
+                  className="font-mono text-sm bg-muted cursor-not-allowed"
                 />
               </div>
               <div className="bg-muted/50 rounded-lg p-4 space-y-2">
-                <p className="text-sm font-medium">Nasıl kullanılır?</p>
+                <p className="text-sm font-medium">Harita Kodunu lib/contact-info.ts'e Nasıl Eklersiniz?</p>
                 <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
                   <li>Google Maps'te konumunuzu açın</li>
                   <li>"Paylaş" butonuna tıklayın</li>
                   <li>"Haritayı yerleştir" sekmesini seçin</li>
-                  <li>Oluşturulan iframe kodunu kopyalayıp buraya yapıştırın</li>
+                  <li>Oluşturulan iframe kodunu kopyalayın</li>
+                  <li><code className="bg-background px-2 py-1 rounded">lib/contact-info.ts</code> dosyasını açın</li>
+                  <li><code className="bg-background px-2 py-1 rounded">mapInfo.embed_html</code> alanına yapıştırın</li>
                 </ol>
               </div>
             </CardContent>

@@ -16,11 +16,17 @@ import "./globals.css"
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-dm-sans",
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
 })
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  display: "swap",
+  preload: true,
+  fallback: ["georgia", "serif"],
 })
 
 export const metadata: Metadata = {
@@ -111,7 +117,7 @@ export const viewport: Viewport = {
 }
 
 export const dynamic = 'force-dynamic'
-export const revalidate = 0
+export const revalidate = 3600 // Cache pages for 1 hour on Vercel
 
 export default async function RootLayout({
   children,
@@ -149,7 +155,7 @@ export default async function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${dmSans.variable} ${playfair.variable} font-sans antialiased`} style={themeStyle}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={true}>
           <SiteSettingsProvider settings={siteSettings}>
             <LanguageProvider>
                <SmoothScrollProvider>

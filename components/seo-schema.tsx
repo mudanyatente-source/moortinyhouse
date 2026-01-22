@@ -53,8 +53,10 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
     email: companyInfo.email || '',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: companyInfo.address?.includes('İstanbul') ? 'İstanbul' : 
-                       companyInfo.address?.includes('Bursa') ? 'Bursa' : 'Türkiye',
+      streetAddress: 'Yeni, ışıklı caddesi no;63/1',
+      addressLocality: 'Mudanya',
+      addressRegion: 'Bursa',
+      postalCode: '16960',
       addressCountry: 'TR'
     },
     areaServed: [
@@ -74,16 +76,28 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
         '@id': 'https://www.wikidata.org/wiki/Q43'
       }
     ],
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+        description: 'Monday - Friday: 09:00 - 18:00'
+      }
+    ],
     priceRange: '$$',
     description: 'Türkiye\'nin önde gelen tiny house üreticisi. İstanbul ve Bursa\'da modern, sürdürülebilir ve özelleştirilebilir tiny house modelleri. Mini ev, küçük ev, mobil ev çözümleri.',
     keywords: 'tiny house, mini ev, küçük ev, mobil ev, prefabrik ev, istanbul tiny house, bursa tiny house, tiny house türkiye, tiny house fiyatları, tiny house modelleri',
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '40.9833',
-      longitude: '29.0833',
+      latitude: '40.7516',
+      longitude: '28.8123',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Bursa',
+        streetAddress: 'Yeni, ışıklı caddesi no;63/1',
+        addressLocality: 'Mudanya',
+        addressRegion: 'Bursa',
+        postalCode: '16960',
         addressCountry: 'TR'
       }
     }

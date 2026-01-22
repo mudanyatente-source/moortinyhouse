@@ -1,3 +1,5 @@
+import { contactInfo, companyInfo, mapInfo, socialMedia } from './contact-info'
+
 export type SiteSettings = {
   company_info: {
     name_tr?: string
@@ -41,22 +43,22 @@ export type SiteSettings = {
 
 export const defaultSiteSettings: SiteSettings = {
   company_info: {
-    name_tr: 'Moortinyhouse',
-    name_en: 'Moortinyhouse',
-    email: 'hello@moortinyhouse.com',
-    phone: '+1 (555) 123-4567',
-    address: 'Portland, Oregon'
+    name_tr: companyInfo.name_tr,
+    name_en: companyInfo.name_en,
+    email: contactInfo.email,
+    phone: contactInfo.phone,
+    address: contactInfo.address
   },
   social_media: {
-    instagram: '#',
-    facebook: '#',
-    twitter: '#',
-    linkedin: '#',
-    youtube: '#',
-    tiktok: '#'
+    instagram: socialMedia.instagram,
+    facebook: socialMedia.facebook,
+    twitter: socialMedia.twitter,
+    linkedin: socialMedia.linkedin,
+    youtube: socialMedia.youtube,
+    tiktok: socialMedia.tiktok
   },
   map: {
-    embed_html: ''
+    embed_html: mapInfo.embed_html
   },
   seo: {
     meta_title_tr: 'Moortinyhouse | Sustainable Tiny House Living',
