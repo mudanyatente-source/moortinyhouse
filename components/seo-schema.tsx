@@ -204,36 +204,7 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
       '@type': 'GeoCoordinates',
       latitude: 40.7516,
       longitude: 28.8123
-    },
-    review: [
-      {
-        '@type': 'Review',
-        reviewBody: 'Mükemmel hizmet ve kalite. Emeklilik hayalımızı gerçekleştirdiler. Çok memnun kaldık!',
-        author: {
-          '@type': 'Person',
-          name: 'Ayşe Demir'
-        },
-        datePublished: '2026-11-15'
-      },
-      {
-        '@type': 'Review',
-        reviewBody: 'Profesyonel ekip, zamanında teslim, şahane tasarım. Tiny house düşünenelere kesinlikle tavsiye ederim.',
-        author: {
-          '@type': 'Person',
-          name: 'Mehmet Kaya'
-        },
-        datePublished: '2026-10-20'
-      },
-      {
-        '@type': 'Review',
-        reviewBody: 'İstanbul\'dan Bursa\'ya yazlık evi hızlı ve kaliteli şekilde kurdular. Hizmet harika.',
-        author: {
-          '@type': 'Person',
-          name: 'Zeynep Yılmaz'
-        },
-        datePublished: '2026-09-10'
-      }
-    ]
+    }
   }
 
   const websiteSchema = {
