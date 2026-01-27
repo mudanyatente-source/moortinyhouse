@@ -32,11 +32,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL('https://moortinyhouse.com'),
   title: {
-    default: "Moortinyhouse | Tiny House Türkiye - Minimalist & Sürdürülebilir Yaşam",
-    template: "%s | Moortinyhouse"
+    default: "Moor Tiny House | Doğayla İç İçe Modern Yaşam - Türkiye'nin Öncü Tiny House Üreticisi",
+    template: "%s | Moor Tiny House"
   },
   description:
-    "Türkiye'nin önde gelen tiny house üreticisi. Emekliler, minimalistler ve doğa severler için İstanbul ve Bursa'da özel tasarım küçük evler. Yazlık, hobi bahçesi evi, emeklilik konutu çözümleri. Ekonomik, sürdürülebilir ve özgür yaşam.",
+    "Emekliler, minimalistler ve doğa severler için Türkiye'nin en iyi tiny house çözümleri. Modern tasarım, ekonomik fiyat, sürdürülebilir yaşam. İstanbul & Bursa'da ücretsiz danışmanlık. Yazlık, hobi bahçesi evi, emeklilik konutu modelleri.",
   keywords: [
     "tiny house",
     "tiny house türkiye",
@@ -94,23 +94,32 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     alternateLocale: ["en_US"],
     url: "https://moortinyhouse.com",
-    siteName: "Moortinyhouse",
-    title: "Moortinyhouse | Tiny House Türkiye - Minimalist & Sürdürülebilir Yaşam",
-    description: "Emekliler, minimalistler ve doğa severler için özel tasarım tiny house modelleri. İstanbul ve Bursa'da ekonomik, sürdürülebilir küçük ev çözümleri.",
+    siteName: "Moor Tiny House",
+    title: "Moor Tiny House | Doğayla İç İçe Modern Yaşam - Türkiye'nin Öncü Tiny House Üreticisi",
+    description: "Emekliler ve minimalistler için modern tiny house modelleri. Ekonomik, sürdürülebilir ve şık tasarım. İstanbul & Bursa'da ücretsiz keşif ve danışmanlık.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Moortinyhouse - Tiny House Türkiye - Minimalist Yaşam",
+        alt: "Moor Tiny House - Modern Tiny House Çözümleri",
+        type: "image/jpeg",
+      },
+      {
+        url: "/beautiful-modern-tiny-house-in-nature-forest-setti.webp",
+        width: 1200,
+        height: 630,
+        alt: "Doğada Modern Tiny House",
+        type: "image/webp",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Moortinyhouse | Tiny House Türkiye - Minimalist Yaşam",
-    description: "Emekliler, minimalistler ve doğa severler için özel tasarım tiny house. İstanbul ve Bursa'da ekonomik küçük ev çözümleri.",
-    images: ["/og-image.jpg"],
+    title: "Moor Tiny House | Modern & Ekonomik Yaşam",
+    description: "Doğayla uyumlu, minimalist tiny house çözümleri. İstanbul & Bursa'da hizmet.",
+    images: ["/og-image.jpg", "/beautiful-modern-tiny-house-in-nature-forest-setti.webp"],
+    creator: "@moortinyhouse",
   },
   alternates: {
     canonical: "https://moortinyhouse.com",

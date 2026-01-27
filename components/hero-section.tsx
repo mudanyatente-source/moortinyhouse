@@ -33,13 +33,15 @@ export function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ y, scale }}>
         <Image
           src="/beautiful-modern-tiny-house-in-nature-forest-setti.webp"
-          alt="Beautiful tiny house in nature"
+          alt="Moor Tiny House - Modern ve Dayanıklı Tasarım"
           fill
           priority
           quality={100}
           sizes="100vw"
           className="object-cover"
           fetchPriority="high"
+          placeholder="blur"
+          blurDataURL="data:image/webp;base64,UklGRiYAAABXRUJQVlA4IBIAAAAwAQCdASoBAAEAAUAcJaQCdLoBAAA="
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40 z-10 dark:from-black/50 dark:via-black/40 dark:to-black/60" />
       </motion.div>

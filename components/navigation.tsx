@@ -144,6 +144,15 @@ export function Navigation() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-background border-s border-border p-8 pt-24 rtl:right-auto rtl:left-0 rtl:border-s-0 rtl:border-e"
             >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-8 right-8 p-2 hover:bg-accent/10 rounded-lg transition-colors z-10"
+                aria-label="Close menu"
+              >
+                <X className="h-6 w-6" />
+              </button>
+              
               <div className="flex flex-col gap-6">
                 {navLinks.map((link, i) => (
                   <motion.div
