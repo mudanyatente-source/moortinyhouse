@@ -173,14 +173,7 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
           itemOffered: {
             '@type': 'Product',
             name: 'Temel Tiny House Modelleri',
-            description: 'Emekliler ve çiftler için 20-30m² kompakt modeller',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.8',
-              reviewCount: '45',
-              bestRating: '5',
-              worstRating: '1'
-            }
+            description: 'Emekliler ve çiftler için 20-30m² kompakt modeller'
           }
         },
         {
@@ -188,14 +181,7 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
           itemOffered: {
             '@type': 'Product',
             name: 'Premium Tiny House Modelleri',
-            description: 'Aileler için 40-60m² geniş modeller',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.9',
-              reviewCount: '82',
-              bestRating: '5',
-              worstRating: '1'
-            }
+            description: 'Aileler için 40-60m² geniş modeller'
           }
         }
       ]
