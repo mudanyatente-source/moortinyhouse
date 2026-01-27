@@ -11,7 +11,7 @@ export default function TermsClient() {
   const content = {
     tr: {
       title: 'Hizmet Şartları',
-      lastUpdated: 'Son Güncelleme: 15 Ocak 2024',
+      lastUpdated: 'Son Güncelleme: 15 Ocak 2026',
       sections: [
         {
           title: '1. Genel Koşullar',
@@ -53,7 +53,7 @@ export default function TermsClient() {
     },
     en: {
       title: 'Terms of Service',
-      lastUpdated: 'Last Updated: January 15, 2024',
+      lastUpdated: 'Last Updated: January 15, 2026',
       sections: [
         {
           title: '1. General Terms',

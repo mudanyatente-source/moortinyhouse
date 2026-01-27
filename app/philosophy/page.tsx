@@ -33,7 +33,7 @@ export default function PhilosophyPage() {
     { year: "2018", titleKey: "timeline.2018.title", descKey: "timeline.2018.desc" },
     { year: "2020", titleKey: "timeline.2020.title", descKey: "timeline.2020.desc" },
     { year: "2022", titleKey: "timeline.2022.title", descKey: "timeline.2022.desc" },
-    { year: "2024", titleKey: "timeline.2024.title", descKey: "timeline.2024.desc" },
+    { year: "2025", titleKey: "timeline.2025.title", descKey: "timeline.2025.desc" },
   ]
 
   return (

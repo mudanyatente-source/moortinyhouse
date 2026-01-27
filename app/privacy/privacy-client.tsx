@@ -11,7 +11,7 @@ export default function PrivacyClient() {
   const content = {
     tr: {
       title: 'Gizlilik Politikası',
-      lastUpdated: 'Son Güncelleme: 15 Ocak 2024',
+      lastUpdated: 'Son Güncelleme: 15 Ocak 2026',
       sections: [
         {
           title: '1. Genel Bilgiler',
@@ -63,7 +63,7 @@ gibi haklarınız bulunmaktadır.`
     },
     en: {
       title: 'Privacy Policy',
-      lastUpdated: 'Last Updated: January 15, 2024',
+      lastUpdated: 'Last Updated: January 15, 2026',
       sections: [
         {
           title: '1. General Information',

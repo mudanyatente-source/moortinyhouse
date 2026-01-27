@@ -312,8 +312,8 @@ export const translations: Translations = {
     tr: "Sürdürülebilir Tasarım İnovasyon Ödülü'nü aldık.",
     ar: "حصلنا على جائزة الابتكار في التصميم المستدام.",
   },
-  "timeline.2024.title": { en: "Carbon Negative", tr: "Karbon Negatif", ar: "سلبي الكربون" },
-  "timeline.2024.desc": {
+  "timeline.2025.title": { en: "Carbon Negative", tr: "Karbon Negatif", ar: "سلبي الكربون" },
+  "timeline.2025.desc": {
     en: "Achieved carbon negative status in our manufacturing process.",
     tr: "Üretim sürecimizde karbon negatif statüsüne ulaştık.",
     ar: "حققنا حالة سلبية الكربون في عملية التصنيع لدينا.",

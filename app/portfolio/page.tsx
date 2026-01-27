@@ -15,7 +15,7 @@ const deliveredHomes = [
     city: "Portland",
     state: "Oregon",
     model: "Aura",
-    year: 2024,
+    year: 2025,
     images: ["/aura-tiny-house-portland-forest.webp", "/aura-tiny-house-interior-living-room.webp", "/aura-tiny-house-kitchen-modern.webp"],
     descEn:
       "Nestled in the Pacific Northwest forests, this Aura model features custom cedar finishes and a meditation deck overlooking the trees.",
@@ -29,7 +29,7 @@ const deliveredHomes = [
     city: "Austin",
     state: "Texas",
     model: "Zen",
-    year: 2024,
+    year: 2025,
     images: [
       "/placeholder.svg?height=800&width=1200",
       "/placeholder.svg?height=800&width=1200",
@@ -44,7 +44,7 @@ const deliveredHomes = [
     city: "Denver",
     state: "Colorado",
     model: "Nova",
-    year: 2023,
+    year: 2025,
     images: [
       "/placeholder.svg?height=800&width=1200",
       "/placeholder.svg?height=800&width=1200",
@@ -59,7 +59,7 @@ const deliveredHomes = [
     city: "Seattle",
     state: "Washington",
     model: "Horizon",
-    year: 2023,
+    year: 2025,
     images: [
       "/placeholder.svg?height=800&width=1200",
       "/placeholder.svg?height=800&width=1200",
@@ -75,7 +75,7 @@ const deliveredHomes = [
     city: "Asheville",
     state: "North Carolina",
     model: "Terra",
-    year: 2023,
+    year: 2025,
     images: [
       "/placeholder.svg?height=800&width=1200",
       "/placeholder.svg?height=800&width=1200",
@@ -93,7 +93,7 @@ const deliveredHomes = [
     city: "San Diego",
     state: "California",
     model: "Lux",
-    year: 2024,
+    year: 2025,
     images: [
       "/placeholder.svg?height=800&width=1200",
       "/placeholder.svg?height=800&width=1200",

@@ -3,55 +3,55 @@ import type { Metadata } from 'next'
 
 const defaultTitles: Record<string, { tr: string; en: string }> = {
   home: {
-    tr: 'Moortinyhouse | Tiny House Türkiye - İstanbul & Bursa | Mini Ev Çözümleri',
-    en: 'Moortinyhouse | Tiny House Turkey - Istanbul & Bursa | Small Home Solutions'
+    tr: 'Moortinyhouse | Tiny House Türkiye - Minimalist & Sürdürülebilir Yaşam',
+    en: 'Moortinyhouse | Tiny House Turkey - Minimalist & Sustainable Living'
   },
   models: {
-    tr: 'Tiny House Modelleri | Mini Ev Çeşitleri | Moortinyhouse',
-    en: 'Tiny House Models | Small Home Varieties | Moortinyhouse'
+    tr: 'Tiny House Modelleri 2026 | Emekliler, Yazlık & Hobi Bahçesi İçin | Moortinyhouse',
+    en: 'Tiny House Models 2026 | For Retirees, Summer & Hobby Garden | Moortinyhouse'
   },
   portfolio: {
-    tr: 'Tamamlanan Tiny House Projeleri | Portföy | Moortinyhouse',
-    en: 'Completed Tiny House Projects | Portfolio | Moortinyhouse'
+    tr: 'Tamamlanan Tiny House Projeleri | İstanbul & Bursa | Moortinyhouse',
+    en: 'Completed Tiny House Projects | Istanbul & Bursa | Moortinyhouse'
   },
   philosophy: {
-    tr: 'Tiny House Felsefemiz | Sürdürülebilir Yaşam | Moortinyhouse',
-    en: 'Our Tiny House Philosophy | Sustainable Living | Moortinyhouse'
+    tr: 'Tiny House Felsefemiz | Minimalist & Sürdürülebilir Yaşam | Moortinyhouse',
+    en: 'Our Tiny House Philosophy | Minimalist & Sustainable Living | Moortinyhouse'
   },
   testimonials: {
-    tr: 'Müşteri Yorumları | Tiny House Referanslar | Moortinyhouse',
-    en: 'Customer Testimonials | Tiny House Reviews | Moortinyhouse'
+    tr: 'Müşteri Yorumları | Tiny House Sahiplerinden Gerçek Deneyimler | Moortinyhouse',
+    en: 'Customer Testimonials | Real Experiences from Tiny House Owners | Moortinyhouse'
   },
   contact: {
-    tr: 'İletişim | Tiny House İletişim Formu | Moortinyhouse',
-    en: 'Contact | Tiny House Contact Form | Moortinyhouse'
+    tr: 'İletişim | Ücretsiz Tiny House Danışmanlığı | Moortinyhouse',
+    en: 'Contact | Free Tiny House Consultation | Moortinyhouse'
   }
 }
 
 const defaultDescriptions: Record<string, { tr: string; en: string }> = {
   home: {
-    tr: 'Türkiye\'nin önde gelen tiny house üreticisi. İstanbul ve Bursa\'da modern, sürdürülebilir ve özelleştirilebilir tiny house modelleri. Mini ev, küçük ev, mobil ev çözümleri.',
-    en: 'Turkey\'s leading tiny house manufacturer. Modern, sustainable and customizable tiny house models in Istanbul and Bursa. Small home, mobile home solutions.'
+    tr: 'Türkiye\'nin önde gelen tiny house üreticisi. Emekliler, minimalistler ve doğa severler için İstanbul ve Bursa\'da özel tasarım küçük evler. Yazlık, hobi bahçesi evi, emeklilik konutu çözümleri.',
+    en: 'Turkey\'s leading tiny house manufacturer. Custom-designed small homes for retirees, minimalists, and nature lovers in Istanbul and Bursa. Summer house, hobby garden home, retirement home solutions.'
   },
   models: {
-    tr: 'Geniş tiny house model yelpazesi. 20m²\'den 60m²\'ye kadar farklı boyutlarda mini ev modelleri. İstanbul ve Bursa\'da tiny house fiyatları ve özellikleri.',
-    en: 'Wide range of tiny house models. Mini home models from 20m² to 60m² in different sizes. Tiny house prices and features in Istanbul and Bursa.'
+    tr: '2026 tiny house modelleri ve fiyatları. Emekliler için bakımı kolay evler, yazlık tiny house, hobi bahçesi evi, off-grid yaşam modelleri. 20m²\'den 60m²\'ye ekonomik seçenekler.',
+    en: '2026 tiny house models and prices. Easy-maintenance homes for retirees, summer tiny houses, hobby garden homes, off-grid living models. Economic options from 20m² to 60m².'
   },
   portfolio: {
-    tr: 'Tamamlanan tiny house projelerimizi keşfedin. İstanbul ve Bursa\'da gerçekleştirdiğimiz başarılı mini ev projeleri ve müşteri memnuniyeti.',
-    en: 'Discover our completed tiny house projects. Successful mini home projects we completed in Istanbul and Bursa and customer satisfaction.'
+    tr: 'İstanbul ve Bursa\'da tamamlanan tiny house projelerimiz. Emekli evleri, yazlık konutlar, hobi bahçesi evleri. Gerçek müşteri örnekleri ve başarı hikayeleri.',
+    en: 'Our completed tiny house projects in Istanbul and Bursa. Retirement homes, summer residences, hobby garden houses. Real customer examples and success stories.'
   },
   philosophy: {
-    tr: 'Sürdürülebilir yaşam felsefesi ile tiny house üretimi. Çevre dostu, enerji verimli ve modern tasarım prensipleri.',
-    en: 'Tiny house production with sustainable living philosophy. Eco-friendly, energy efficient and modern design principles.'
+    tr: 'Minimalist yaşam felsefesi ile tiny house üretimi. Emekliler ve doğa severler için sürdürülebilir, çevre dostu, ekonomik ve özgür yaşam alanları tasarlıyoruz.',
+    en: 'Tiny house production with minimalist living philosophy. We design sustainable, eco-friendly, economical and free living spaces for retirees and nature lovers.'
   },
   testimonials: {
-    tr: 'Tiny house müşterilerimizin deneyimleri ve yorumları. İstanbul ve Bursa\'da tiny house sahibi olan müşterilerimizin gerçek hikayeleri.',
-    en: 'Experiences and reviews of our tiny house customers. Real stories of our customers who own tiny houses in Istanbul and Bursa.'
+    tr: 'Tiny house sahiplerinin gerçek deneyimleri. Emekliler, genç çiftler ve doğa severlerden yorumlar. İstanbul ve Bursa\'da tiny house yaşamı hakkında değerlendirmeler.',
+    en: 'Real experiences from tiny house owners. Reviews from retirees, young couples and nature lovers. Evaluations about tiny house living in Istanbul and Bursa.'
   },
   contact: {
-    tr: 'Tiny house hakkında sorularınız için bizimle iletişime geçin. İstanbul ve Bursa\'da ücretsiz keşif ve danışmanlık hizmeti.',
-    en: 'Contact us for questions about tiny houses. Free exploration and consultancy service in Istanbul and Bursa.'
+    tr: 'Tiny house hakkında ücretsiz danışmanlık alın. İstanbul ve Bursa\'da keşif randevusu. Emekliler, yazlık ve hobi bahçesi için özel çözümler.',
+    en: 'Get free consultation about tiny houses. Discovery appointment in Istanbul and Bursa. Special solutions for retirees, summer houses and hobby gardens.'
   }
 }
 
@@ -74,7 +74,7 @@ export function getPageMetadata(settings: SiteSettings | null | undefined, pageI
   const siteUrl = 'https://moortinyhouse.com'
   const pageUrl = pageId === 'home' ? siteUrl : `${siteUrl}/${pageId}`
   
-  const keywords = [
+  const baseKeywords = [
     'tiny house',
     'tiny house türkiye',
     'mini ev',
@@ -87,12 +87,74 @@ export function getPageMetadata(settings: SiteSettings | null | undefined, pageI
     'tiny house modelleri',
     'mini ev fiyatları',
     'küçük ev modelleri',
-    ...(pageId === 'models' ? ['tiny house çeşitleri', 'mini ev çeşitleri', 'orion tiny house', 'beverly tiny house'] : []),
-    ...(pageId === 'portfolio' ? ['tamamlanan projeler', 'tiny house portföy', 'istanbul tiny house projeleri', 'bursa tiny house projeleri'] : []),
-    ...(pageId === 'contact' ? ['tiny house iletişim', 'randevu', 'tiny house keşif', 'ücretsiz danışmanlık'] : []),
-    ...(pageId === 'philosophy' ? ['sürdürülebilir yaşam', 'ekolojik ev', 'çevre dostu ev'] : []),
-    ...(pageId === 'testimonials' ? ['müşteri yorumları', 'tiny house referanslar', 'müşteri memnuniyeti'] : []),
+    'emekli evi',
+    'yazlık ev',
+    'hobi bahçesi evi',
+    'doğada yaşam',
+    'minimalist yaşam',
+    'sürdürülebilir ev',
+    'ekonomik ev',
+    'off-grid ev'
   ]
+
+  const pageSpecificKeywords: Record<string, string[]> = {
+    models: [
+      'tiny house çeşitleri',
+      'mini ev çeşitleri',
+      'orion tiny house',
+      'beverly tiny house',
+      'emekli için tiny house',
+      'yazlık tiny house modelleri',
+      'hobi bahçesi için ev',
+      'küçük ev planları',
+      'taşınabilir ev modelleri'
+    ],
+    portfolio: [
+      'tamamlanan projeler',
+      'tiny house portföy',
+      'istanbul tiny house projeleri',
+      'bursa tiny house projeleri',
+      'tiny house örnekleri',
+      'gerçek tiny house',
+      'müşteri projeleri'
+    ],
+    contact: [
+      'tiny house iletişim',
+      'randevu',
+      'tiny house keşif',
+      'ücretsiz danışmanlık',
+      'tiny house teklif',
+      'fiyat sorgulama'
+    ],
+    philosophy: [
+      'sürdürülebilir yaşam',
+      'ekolojik ev',
+      'çevre dostu ev',
+      'minimalist felsefe',
+      'basit yaşam',
+      'doğa ile uyumlu ev'
+    ],
+    testimonials: [
+      'müşteri yorumları',
+      'tiny house referanslar',
+      'müşteri memnuniyeti',
+      'kullanıcı deneyimleri',
+      'gerçek yorumlar'
+    ],
+    home: [
+      'türkiye tiny house',
+      'istanbul tiny house',
+      'bursa tiny house',
+      'moor tiny house',
+      'emeklilik evi',
+      'tatil evi',
+      'bahçe evi',
+      'ikinci ev',
+      'hafta sonu evi'
+    ]
+  }
+
+  const keywords = [...baseKeywords, ...(pageSpecificKeywords[pageId] || [])]
 
   return {
     title,

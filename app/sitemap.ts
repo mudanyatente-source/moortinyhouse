@@ -112,43 +112,67 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching portfolio for sitemap:', error)
   }
 
-  // Blog pages (static)
+  // Blog pages (static) - Updated January 2026
   const blogPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/blog/tiny-house-nedir-2024-rehberi`,
-      lastModified: new Date('2024-01-15'),
+      url: `${baseUrl}/blog/tiny-house-nedir-kapsamli-rehber`,
+      lastModified: new Date('2026-01-25'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/blog/tiny-house-fiyatlari-detayli-fiyat-listesi`,
-      lastModified: new Date('2024-01-10'),
+      lastModified: new Date('2026-01-22'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/blog/istanbulda-tiny-house-yasami-rehber`,
-      lastModified: new Date('2024-01-05'),
+      lastModified: new Date('2026-01-20'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/blog/bursada-tiny-house-yerlesim-alanlari`,
-      lastModified: new Date('2023-12-28'),
+      lastModified: new Date('2026-01-18'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/blog/tiny-house-vs-prefabrik-ev-karsilastirma`,
-      lastModified: new Date('2023-12-20'),
+      lastModified: new Date('2026-01-15'),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/blog/tiny-house-ruhsat-ve-yasal-surecler`,
-      lastModified: new Date('2023-12-15'),
+      lastModified: new Date('2026-01-12'),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/emekliler-icin-tiny-house-secme-rehberi`,
+      lastModified: new Date('2026-01-28'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/turkiyede-tiny-house-maliyeti-detayli-analiz`,
+      lastModified: new Date('2026-01-25'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/yazlik-ev-olarak-tiny-house-avantajlari`,
+      lastModified: new Date('2026-01-20'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/hobi-bahcesi-mini-evi-ihtiyaciniz-var-mi`,
+      lastModified: new Date('2026-01-15'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
   ]
 
