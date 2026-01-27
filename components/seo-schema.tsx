@@ -215,12 +215,6 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
     review: [
       {
         '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-          worstRating: '1'
-        },
         reviewBody: 'Mükemmel hizmet ve kalite. Emeklilik hayalımızı gerçekleştirdiler. Çok memnun kaldık!',
         author: {
           '@type': 'Person',
@@ -230,12 +224,6 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
       },
       {
         '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-          worstRating: '1'
-        },
         reviewBody: 'Profesyonel ekip, zamanında teslim, şahane tasarım. Tiny house düşünenelere kesinlikle tavsiye ederim.',
         author: {
           '@type': 'Person',
@@ -245,12 +233,6 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
       },
       {
         '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5',
-          worstRating: '1'
-        },
         reviewBody: 'İstanbul\'dan Bursa\'ya yazlık evi hızlı ve kaliteli şekilde kurdular. Hizmet harika.',
         author: {
           '@type': 'Person',
