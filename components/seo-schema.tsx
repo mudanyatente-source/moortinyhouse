@@ -204,13 +204,6 @@ export function SeoSchema({ settings, type = 'Organization', pageType = 'home', 
       '@type': 'GeoCoordinates',
       latitude: 40.7516,
       longitude: 28.8123
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1'
     }
   }
 
