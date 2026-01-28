@@ -36,7 +36,7 @@ export function HeroSection() {
           alt="Moor Tiny House - Modern ve Dayanıklı Tasarım"
           fill
           priority
-          quality={100}
+          quality={75}
           sizes="100vw"
           className="object-cover"
           fetchPriority="high"

@@ -15,7 +15,6 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: false,
   },
-  swcMinify: true,
   productionBrowserSourceMaps: false,
   headers: async () => {
     return [
