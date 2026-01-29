@@ -1,0 +1,27 @@
+# Robots.txt - Moortinyhouse
+# Tüm search engine botlarına izin veriyoruz
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /auth
+Disallow: /*.json$
+Disallow: *?*sort=
+Disallow: *?*filter=
+Disallow: *?*page=
+
+# Sitemap konumu
+Sitemap: https://moortinyhouse.com/sitemap.xml
+
+# Crawl delay (Google genellikle bunu umursamaz)
+# Crawl-delay: 1
+
+# Bing için özel ayarlar
+User-agent: Bingbot
+Allow: /
+
+# Yandex için
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
